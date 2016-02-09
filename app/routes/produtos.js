@@ -1,16 +1,12 @@
-module.exports = function(app){
-	app.get('/produtos', function(req, res){
-		var mysql = require('mysql');
-		var connection = mysql.createConnection({
-			host: 'localhost',
-			user: 'root',
-			password: '',
-			database: 'node'
+module.exports = function(app) {
+	app.get("/produtos",function(req, res) {
+		var connection = app.infra.connectionFactory();
+		var produtosBanco = new app.infra.produtosBanco(connection);
+
+		produtosBanco.lista(function(err, results){
+			res.render('produtos/lista', {lista: results});
 		});
 
-		connection.query('select * from livros', function(err, result){
-			res.render('produtos/lista', {lista:result});
-		});
 		connection.end();
 	});
 }
