@@ -10,7 +10,9 @@
     "express-load": "^1.1.15",
     "mysql": "^2.10.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
