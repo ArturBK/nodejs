@@ -10,12 +10,3 @@ describe('#ProdutosController', function() {
             .expect(200, done);
         });
 });
-
-beforeEach(function(done) {
-        var connection = app.infra.connectionFactory();            
-        connection.query("delete from livros", function(ex,result){
-            if(!ex){
-                done();
-            }
-        });
- });
